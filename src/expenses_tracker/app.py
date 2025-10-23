@@ -5,3 +5,4 @@ def app():
     user = create_init_user()
     tracker = create_init_tracker(user)
     main_menu()
+    
