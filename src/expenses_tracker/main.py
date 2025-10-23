@@ -1,7 +1,7 @@
-from repositories.expenses_tracker_executor import *
+from app import app
 
 def main():
-    expenses_tracker_executor()
+    app()
     
 if __name__ == '__main__':
     main()
