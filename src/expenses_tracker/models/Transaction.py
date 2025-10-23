@@ -1,4 +1,4 @@
-import Category
+from models import Category
 from random import randint
 from datetime import datetime
 from utils import *
