@@ -15,13 +15,13 @@ def is_valid_phone_number(string):
     return False
 
 def is_valid_integer(number):
-    if isinstance(number, int) and (number > 0):
+    if isinstance(number, int):
         return True
     else:
         False
         
 def is_valid_currency(currency):
-    if isinstance(currency, float):
+    if isinstance(currency, float) and currency > 0:
         return True
     else:
         False

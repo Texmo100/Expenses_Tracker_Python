@@ -1,38 +1,51 @@
 def main_menu():
-    print('Welcome to Expenses Tracker - Y')
-    print('------------ Menu ------------')
-    print('0: Exit')
-    print('1: Categories menu ------------')
-    print('2: Budgets menu ------------')
-    print('3: Transactions menu ------------')
-    print('-------------------------------')
+    main_menu_options = {
+        0: 'exit',
+        1: 'categories',
+        2: 'budgets',
+        3: 'transactions'
+    }
 
-def categories_menu(count):
-    print('------------ Categories Menu ------------')
-    print(f'Categories available: {count}')
-    print('0: Main menu')
-    print('1: Show categories')
-    print('2: Create new category')
-    print('3: Modify a category')
-    print('4: Delete a Category')
-    print('-----------------------------------------')
+    return main_menu_options
 
-def budgets_menu(count):
-    print('------------ Budgets Menu ------------')
-    print(f'Budgets available: {count}')
-    print('0: Main menu')
-    print('1: Show budgets')
-    print('2: Create new budget')
-    print('3: Modify a budget')
-    print('4: Delete a budget')
-    print('-----------------------------------------')
+def sub_menu(selected_option_name):
+    sub_menu_options = {
+        0: 'Main menu',
+        1: f'Show <place-holder>',
+        2: f'Create new <place-holder>',
+        3: f'Modify a <place-holder>',
+        4: f'Delete a <place-holder>'
+    }
 
-def transactions_menu(count):
-    print('------------ Transactions Menu ------------')
-    print(f'Transactions available: {count}')
-    print('0: Main menu')
-    print('1: Show transactions')
-    print('2: Create new transaction')
-    print('3: Modify a transaction')
-    print('4: Delete a transaction')
-    print('-----------------------------------------')
+    # Formating and replacing placeholders
+    for key, value in sub_menu_options.items():
+        if key == 1:
+            new_value = value.replace('<place-holder>', selected_option_name)
+            sub_menu_options[key] = new_value
+
+        if key > 1 and selected_option_name == 'categories':
+            new_value = value.replace('<place-holder>', 'category')
+            sub_menu_options[key] = new_value
+
+        if key > 1 and selected_option_name != 'categories':
+            new_value = value.replace('<place-holder>', selected_option_name[:-1])
+            sub_menu_options[key] = new_value
+
+    return sub_menu_options
+
+def menu_printer(options, type='main_menu', option_selected_name=None):
+    if type == 'main_menu' and option_selected_name == None:
+        print('\n')
+        print('Welcome to Expenses Tracker ------ Y')
+        print('------------ Main Menu -------------')
+        for key, value in options.items():
+            print(f'{key}: {value}')
+        print('------------------------------------')
+    
+    if type == 'sub_menu' and option_selected_name != None:
+        print('\n')
+        print(f'{option_selected_name} Menu')
+        print('-------------------------------')
+        for key, value in options.items():
+            print(f'{key}: {value}')
+        print('-------------------------------')

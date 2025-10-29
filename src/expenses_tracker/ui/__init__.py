@@ -1,8 +1,7 @@
-__all__ = ['main_menu', 'categories_menu', 'budgets_menu', 'transactions_menu']
+__all__ = ['main_menu', 'sub_menu', 'menu_printer']
 
 from .ui import main_menu
-from .ui import categories_menu
-from .ui import budgets_menu
-from .ui import transactions_menu
+from .ui import sub_menu
+from .ui import menu_printer
 
 PACKAGE_VERSION = '1.0.0'
