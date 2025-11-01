@@ -39,12 +39,12 @@ def menu_printer(options, type='main_menu', option_selected_name=None):
         print('Welcome to Expenses Tracker ------ Y')
         print('------------ Main Menu -------------')
         for key, value in options.items():
-            print(f'{key}: {value}')
+            print(f'{key}: {value.capitalize()}')
         print('------------------------------------')
     
     if type == 'sub_menu' and option_selected_name != None:
         print('\n')
-        print(f'{option_selected_name} Menu')
+        print(f'{option_selected_name.capitalize()} Menu')
         print('-------------------------------')
         for key, value in options.items():
             print(f'{key}: {value}')
