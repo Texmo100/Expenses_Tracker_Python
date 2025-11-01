@@ -48,7 +48,7 @@ class Budget:
         else:
             print('Not a valid value for b_range')
 
-    def show_budget_info(self):
+    def show_detailed_info(self):
         print(f'ID: {self._id}')
         print(f'Budget Name: {self._name}')
         print(f'Category name: {self._category}')

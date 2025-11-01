@@ -71,7 +71,7 @@ class Transaction:
         else:
             print('Not a valid value for payment_method')
 
-    def show_transaction_info(self):
+    def show_detailed_info(self):
         print(f'ID: {self._id}')
         print(f'Transaction type: {self._tranc_type}')
         print(f'Amount: {self._amount}')

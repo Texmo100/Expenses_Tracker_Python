@@ -1,4 +1,6 @@
-__all__ = ['create_init_user', 'create_init_tracker', 'expenses_tracker_executor']
+__all__ = ['create_init_user', 
+           'create_init_tracker',
+        ]
 
 from .tracker_controller import create_init_user
 from .tracker_controller import create_init_tracker

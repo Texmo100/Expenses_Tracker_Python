@@ -45,7 +45,7 @@ class Category:
         else:
             print('Not a valid value for limit')
     
-    def show_category_info(self):
+    def show_detailed_info(self):
         print(f'ID: {self._id}')
         print(f'Name: {self._name}')
         print(f'Description: {self._description}')

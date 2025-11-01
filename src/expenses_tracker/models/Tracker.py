@@ -28,7 +28,7 @@ class Tracker:
     def show_transaction_list(self):
         if len(self.transaction_history) > 0:
             for transaction in self.transaction_history:
-                transaction.show_transaction_info()
+                transaction.show_detailed_info()
                 print('\n')
         else:
             print('No transactions to show')
@@ -60,21 +60,23 @@ class Tracker:
     def show_budget_list(self):
         if len(self.budget_list) > 0:
             for budget in self.budget_list:
-                budget.show_budget_info()
+                budget.show_detailed_info()
                 print('\n')
         else:
             print('No budgets to show')
 
-    def select_budget(self, budget_id):
-        if is_valid_string(budget_id):
-            target_budget = [budget for budget in self.budget_list if budget_id == budget.id]
-            if len(target_budget) > 0:
-                return target_budget[0]
-            else:
-                print('Budget id not found')
-                return None
+    def select_budget(self, search_term, search_by='id'):
+        if is_valid_string(search_term):
+            target_budget = []
+            if search_by == 'id':
+                target_budget = [budget for budget in self.budget_list if search_term == budget.id]
+            
+            if search_by == 'name':
+                target_budget = [budget for budget in self.budget_list if search_term == budget.name]
+            
+            return target_budget[0] if len(target_budget) > 0 else None
         else:
-            print('Budget Id not valid')
+            print('Search term is not valid')
             return None
 
     def add_budget(self, budget):
@@ -92,21 +94,23 @@ class Tracker:
     def show_category_list(self):
         if len(self.category_list) > 0:
             for category in self.category_list:
-                category.show_category_info()
+                category.show_detailed_info()
                 print('\n')
         else:
             print('No categories to show')
 
-    def select_category(self, category_id):
-        if is_valid_string(category_id):
-            target_category = [category for category in self.category_list if category_id == category.id]
-            if len(target_category) > 0:
-                return target_category[0]
-            else:
-                print('Category id not found')
-                return None
+    def select_category(self, search_term, search_by='id'):
+        if is_valid_string(search_term):
+            target_category = []
+            if search_by == 'id':
+                target_category = [category for category in self.category_list if search_term == category.id]
+            
+            if search_by == 'name':
+                target_category = [category for category in self.category_list if search_term == category.name]
+            
+            return target_category[0] if len(target_category) > 0 else None
         else:
-            print('Category Id not valid')
+            print('Search term is not valid')
             return None
 
     def add_category(self, category):
