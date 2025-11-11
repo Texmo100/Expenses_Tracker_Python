@@ -25,6 +25,18 @@ class Tracker:
         else:
             print('Not a valid value for user')
 
+    @property
+    def transaction_history(self):
+        return self.transaction_history
+    
+    @property
+    def budget_list(self):
+        return self.budget_list
+    
+    @property
+    def category_list(self):
+        return self.category_list
+
     def show_transaction_list(self):
         if len(self.transaction_history) > 0:
             for transaction in self.transaction_history:
