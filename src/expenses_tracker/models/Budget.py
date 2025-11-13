@@ -1,9 +1,10 @@
+from interfaces import ETModelInterface
 from models import Category
 from random import randint
 from datetime import datetime
 from utils import *
 
-class Budget:
+class Budget(ETModelInterface):
     def __init__(self, name='', category=None, b_range=(0, 0)):
         self._id = 'b00' + str(randint(1, 10000))
         self._name = name

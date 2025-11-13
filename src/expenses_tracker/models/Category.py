@@ -1,7 +1,8 @@
+from interfaces import ETModelInterface
 from random import randint
 from utils import *
 
-class Category:
+class Category(ETModelInterface):
     def __init__(self, name='', description='', limit=0):
         self._id = 'c00' + str(randint(1, 10000))
         self._name = name

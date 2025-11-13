@@ -10,7 +10,7 @@ models:
         instance_methods:
             None
 
-    - Budget:
+    - Budget(ETModelInterface):
         instance_attributes:
             - id (str) [get]
             - name (str) [get, set]
@@ -22,7 +22,7 @@ models:
             - show_detailed_info()
 
 
-    - Category:
+    - Category(ETModelInterface):
         instance_attributes:
             - id (str) [get]
             - name (str) [get, set]
@@ -32,7 +32,7 @@ models:
         instance_methods:
             - show_detailed_info()
 
-    - Transaction:
+    - Transaction(ETModelInterface):
         instance_attributes:
             - id (str) [get]
             - tranc_type (str) [get, set]

@@ -2,4 +2,7 @@ interfaces:
     - ETControllerInterface:
         - create()
         - update()
+
+    - ETModelInterface:
+        - show_detailed_info()
         

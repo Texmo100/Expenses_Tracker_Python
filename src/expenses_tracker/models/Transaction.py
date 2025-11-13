@@ -1,9 +1,10 @@
+from interfaces import ETModelInterface
 from models import Category
 from random import randint
 from datetime import datetime
 from utils import *
 
-class Transaction:
+class Transaction(ETModelInterface):
     def __init__(self, tranc_type='', amount=0, category=None, payment_method=''):
         self._id = 't00' + str(randint(1, 10000))
         self._tranc_type = tranc_type
