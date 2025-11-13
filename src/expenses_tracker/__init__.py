@@ -1,7 +1,7 @@
-__all__ = ['models', 'repositories', 'ui', 'utils', 'app', 'main']
+__all__ = ['models', 'controllers', 'ui', 'utils', 'app', 'main']
 
 from .models import models
-from .repositories import repositories
+from .controllers import controllers
 from .ui import ui
 from .utils import utils
 from .app import app

@@ -1,4 +1,4 @@
-from ETListBase import ETListBase
+from .ETListBase import ETListBase
 
 class TransactionList(ETListBase):
     pass

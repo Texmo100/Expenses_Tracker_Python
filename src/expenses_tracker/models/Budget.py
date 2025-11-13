@@ -44,7 +44,7 @@ class Budget(ETModelInterface):
     
     @b_range.setter
     def b_range(self, value):
-        if (is_valid_currency(value[0]) and value[0] > 0) and (is_valid_currency(value[1]) and value[1] > value[0]):
+        if is_valid_currency(value[0]) and is_valid_currency(value[1]):
             self._b_range = value
         else:
             print('Not a valid value for b_range')

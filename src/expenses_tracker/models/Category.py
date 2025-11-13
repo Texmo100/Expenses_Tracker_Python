@@ -30,7 +30,7 @@ class Category(ETModelInterface):
     
     @description.setter
     def description(self, value):
-        if is_valid_string(value):
+        if is_valid_text(value):
             self._description = value
         else:
             print('Not a valid value for description')
@@ -41,7 +41,7 @@ class Category(ETModelInterface):
     
     @limit.setter
     def limit(self, value):
-        if is_valid_currency(value) and value > 0:
+        if is_valid_currency(value):
             self._limit = value
         else:
             print('Not a valid value for limit')

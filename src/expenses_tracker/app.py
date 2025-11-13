@@ -1,10 +1,15 @@
-from ui import *
-from repositories import create_init_user, create_init_tracker
+from models import User, Tracker, CategoryList, BudgetList, TransactionList
+# from controllers import UserController, TrackerController
 from utils.input_processors import option_input_processor
+from ui import *
 
 def app():
-    user = create_init_user()
-    tracker = create_init_tracker(user)
+    category_list = CategoryList()
+    budget_list = BudgetList()
+    transaction_list = TransactionList()
+
+    user = User("isaac", "iniguez", "6623451765", "landing island")
+    tracker = Tracker(user, category_list, budget_list, transaction_list)
 
     is_exit = False
     while is_exit == False:

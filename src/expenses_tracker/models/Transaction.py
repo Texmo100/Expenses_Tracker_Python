@@ -23,9 +23,7 @@ class Transaction(ETModelInterface):
     
     @tranc_type.setter
     def tranc_type(self, value):
-        if is_valid_string(value) and value.lower() == 'expense':
-            self._tranc_type = value
-        elif is_valid_string(value) and value.lower() == 'income':
+        if is_valid_string(value):
             self._tranc_type = value
         else:
             print('Not a valid value for tranc_type')
@@ -63,11 +61,7 @@ class Transaction(ETModelInterface):
     
     @payment_method.setter
     def payment_method(self, value):
-        if is_valid_string(value) and value.lower() == 'cash':
-            self._payment_method = value
-        elif is_valid_string(value) and value.lower() == 'debit_card':
-            self._payment_method = value
-        elif is_valid_string(value) and value.lower() == 'credit_card':
+        if is_valid_string(value):
             self._payment_method = value
         else:
             print('Not a valid value for payment_method')
