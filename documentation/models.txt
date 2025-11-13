@@ -1,0 +1,70 @@
+models:
+    - User:
+        instance_attributes: 
+            - id (str) [get]
+            - firstname (str) [get, set]
+            - lastname (str) [get, set]
+            - phone_number (str) [get, set]
+            - address (str) [get, set]
+
+        instance_methods:
+            None
+
+    - Budget:
+        instance_attributes:
+            - id (str) [get]
+            - name (str) [get, set]
+            - category (Category) [get, set]
+            - b_range (Tuple) [get, set]
+            - created_at (DateTime)
+
+        instance_methods:
+            - show_detailed_info()
+
+
+    - Category:
+        instance_attributes:
+            - id (str) [get]
+            - name (str) [get, set]
+            - description (str) [get, set]
+            - limit (float) [get, set]
+
+        instance_methods:
+            - show_detailed_info()
+
+    - Transaction:
+        instance_attributes:
+            - id (str) [get]
+            - tranc_type (str) [get, set]
+            - amount (float) [get, set]
+            - category (Category) [get, set]
+            - date (DateTime) [get]
+            - payment_method (str) [get, set]
+
+        instance_methods:
+            - show_detailed_info()
+
+    - Tracker:
+        instance_attributes:
+            - id (str) [get]
+            - user (User) [get, set]
+            - category_list (CategoryList) [get, set]
+            - budget_list (BudgetList) [get, set]
+            - transaction_list (TransactionList) [get, set]
+        
+        instance_methods:
+            None
+
+    - ETListBase:
+        instance_attributes:
+            collection (List)
+
+        instance_methods:
+            - print_list()
+            - select_from_list()
+            - add_to_list()
+            - remove_from_list()
+    
+    - CategoryList(ETListBase)
+    - BudgetList(ETListBase)
+    - TransactionList(ETListBase)

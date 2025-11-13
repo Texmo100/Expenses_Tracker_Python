@@ -1,0 +1,20 @@
+repositories:
+    - CategoryController(ETControllerInterface):
+        - create()
+        - update()
+
+    - BudgetController(ETControllerInterface):
+        - create()
+        - update()
+
+    - TransactionController(ETControllerInterface):
+        - create()
+        - update()
+
+    - UserController(ETControllerInterface)
+        - create()
+        - update()
+
+    - TrackerController():
+        - create()
+        - update()
