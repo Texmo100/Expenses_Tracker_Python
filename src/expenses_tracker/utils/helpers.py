@@ -4,7 +4,7 @@ def is_valid_string(string):
     return False
 
 def is_valid_text(text):
-    if isinstance(text, str):
+    if isinstance(text, str) and text.count(" ") > 0:
         return True
     else:
         return False
