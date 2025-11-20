@@ -2,8 +2,8 @@ import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ..utils.helpers import *
-from ..utils.input_processors import *
+from ...utils.helpers import *
+from ...utils.input_processors import *
 
 class TestInputProcessors(TestCase):
     @patch("builtins.input")
