@@ -1,8 +1,8 @@
-from interfaces import ETModelInterface
-from models import Category
+from ..interfaces import ETModelInterface
+from .Category import Category
 from random import randint
-from datetime import datetime
-from utils import *
+from datetime import date
+from ..utils import *
 
 class Budget(ETModelInterface):
     def __init__(self, name='', category=None, b_range=(0, 0)):
@@ -10,7 +10,7 @@ class Budget(ETModelInterface):
         self._name = name
         self._category = category
         self._b_range = b_range
-        self._created_at = datetime.now()
+        self._created_at = date.today()
 
     @property
     def id(self):
@@ -44,10 +44,14 @@ class Budget(ETModelInterface):
     
     @b_range.setter
     def b_range(self, value):
-        if is_valid_currency(value[0]) and is_valid_currency(value[1]):
+        if (isinstance(value, tuple)) and (is_valid_currency(value[0]) and is_valid_currency(value[1])):
             self._b_range = value
         else:
             print('Not a valid value for b_range')
+
+    @property
+    def created_at(self):
+        return self._created_at
 
     def show_detailed_info(self):
         print(f'ID: {self._id}')

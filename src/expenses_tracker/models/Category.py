@@ -1,6 +1,6 @@
-from interfaces import ETModelInterface
+from ..interfaces import ETModelInterface
 from random import randint
-from utils import *
+from ..utils import *
 
 class Category(ETModelInterface):
     def __init__(self, name='', description='', limit=0):

@@ -1,8 +1,8 @@
-from interfaces import ETModelInterface
-from models import Category
+from ..interfaces import ETModelInterface
+from .Category import Category
 from random import randint
 from datetime import datetime
-from utils import *
+from ..utils import *
 
 class Transaction(ETModelInterface):
     def __init__(self, tranc_type='', amount=0, category=None, payment_method=''):
