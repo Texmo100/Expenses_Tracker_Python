@@ -18,12 +18,12 @@ class Tracker:
     
     @property
     def category_list(self):
-        return self.category_list
+        return self._category_list
     
     @property
     def budget_list(self):
-        return self.budget_list
+        return self._budget_list
     
     @property
     def transaction_list(self):
-        return self.transaction_history
+        return self._transaction_list
