@@ -1,7 +1,15 @@
+import re
+
 def is_valid_string(string):
-    if isinstance(string, str) and string.isalnum():
-        return True
-    return False
+    if isinstance(string, str):
+        pattern = r"^[a-zA-Z\s]+$"
+
+        full_match = re.fullmatch(pattern, string)
+        is_valid = True if full_match is not None else False
+
+        return is_valid
+    else:
+        return False
 
 def is_valid_text(text):
     if isinstance(text, str) and text.count(" ") > 0:

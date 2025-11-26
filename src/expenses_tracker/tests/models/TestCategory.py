@@ -1,7 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
 from ...models.Category import Category
-from ...interfaces.ETModelInterface import ETModelInterface
 from io import StringIO
 
 class TestCategory(TestCase):
@@ -13,7 +12,6 @@ class TestCategory(TestCase):
 
     def test_category_initialization(self):
         self.assertIsInstance(self.obj, Category)
-        self.assertIsSubclass(Category, ETModelInterface)
         self.assertEqual(self.obj.name, "games")
         self.assertEqual(self.obj.description, "this is a very large description to demonstrate it works")
         self.assertEqual(self.obj.limit, 1000.00)

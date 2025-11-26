@@ -53,7 +53,7 @@ class User:
     
     @address.setter
     def address(self, value):
-        if is_valid_string(value):
+        if is_valid_text(value):
             self._address = value
         else:
             print('Not a valid value for address')

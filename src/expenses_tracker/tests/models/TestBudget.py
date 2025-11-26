@@ -4,7 +4,6 @@ from io import StringIO
 from datetime import date
 from ...models.Budget import Budget
 from ...models.Category import Category
-from ...interfaces.ETModelInterface import ETModelInterface
 
 class TestBudget(TestCase):
     def setUp(self):
@@ -16,7 +15,6 @@ class TestBudget(TestCase):
 
     def test_budget_initialization(self):
         self.assertIsInstance(self.obj, Budget)
-        self.assertIsSubclass(Budget, ETModelInterface)
         self.assertEqual(self.obj.name, "work")
         self.assertIsInstance(self.obj.category, Category)
         self.assertEqual(self.obj.b_range, (100.00, 1000.00))

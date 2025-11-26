@@ -1,7 +1,7 @@
 from ..interfaces import ETModelInterface
 from .Category import Category
 from random import randint
-from datetime import datetime
+from datetime import date
 from ..utils import *
 
 class Transaction(ETModelInterface):
@@ -10,7 +10,7 @@ class Transaction(ETModelInterface):
         self._tranc_type = tranc_type
         self._amount = amount
         self._category = category
-        self._date = datetime.now()
+        self._date = date.today()
         self._payment_method = payment_method
 
     @property
@@ -23,7 +23,7 @@ class Transaction(ETModelInterface):
     
     @tranc_type.setter
     def tranc_type(self, value):
-        if is_valid_string(value):
+        if is_valid_string(value) and (value == "income" or value == "expense"):
             self._tranc_type = value
         else:
             print('Not a valid value for tranc_type')
@@ -39,6 +39,8 @@ class Transaction(ETModelInterface):
                 self._amount = value * -1
             elif self._tranc_type == 'income':
                 self._amount = value
+        else:
+            print("Not a valid value for amount")
 
     @property
     def category(self):
@@ -61,7 +63,7 @@ class Transaction(ETModelInterface):
     
     @payment_method.setter
     def payment_method(self, value):
-        if is_valid_string(value):
+        if is_valid_string(value) and (value == "cash" or value == "credit card"):
             self._payment_method = value
         else:
             print('Not a valid value for payment_method')
