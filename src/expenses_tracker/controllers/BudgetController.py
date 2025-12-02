@@ -1,6 +1,6 @@
-from models import Budget
-from interfaces import ETControllerInterface
-from utils.input_processors import string_input_processor, float_input_processor
+from ..models import Budget
+from ..interfaces import ETControllerInterface
+from ..utils.input_processors import string_input_processor, float_input_processor
 
 class BudgetController(ETControllerInterface):
     def create(self, budget_list, category_list):

@@ -1,5 +1,5 @@
 from random import randint
-from ..utils import *
+from ..utils.helpers import *
 
 class User:
     def __init__(self, firstname='', lastname='', phone_number='', address=''):

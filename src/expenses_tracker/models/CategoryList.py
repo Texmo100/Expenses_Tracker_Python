@@ -1,6 +1,6 @@
 from typing import override
 from .ETListBase import ETListBase
-from . import Category
+from .Category import Category
 
 class CategoryList(ETListBase):
     @override

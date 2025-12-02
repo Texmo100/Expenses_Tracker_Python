@@ -1,9 +1,9 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ...interfaces.ETModelInterface import ETModelInterface
-from ...models.Transaction import Transaction
-from ...models.Category import Category
+from src.expenses_tracker.interfaces.ETModelInterface import ETModelInterface
+from src.expenses_tracker.models.Transaction import Transaction
+from src.expenses_tracker.models.Category import Category
 from datetime import date
 
 class TestTransaction(TestCase):

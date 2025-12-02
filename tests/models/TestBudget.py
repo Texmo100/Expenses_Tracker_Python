@@ -2,8 +2,8 @@ from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
 from datetime import date
-from ...models.Budget import Budget
-from ...models.Category import Category
+from src.expenses_tracker.models.Budget import Budget
+from src.expenses_tracker.models.Category import Category
 
 class TestBudget(TestCase):
     def setUp(self):

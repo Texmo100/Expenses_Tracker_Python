@@ -1,8 +1,8 @@
-from ..interfaces import ETModelInterface
-from .Category import Category
 from random import randint
 from datetime import date
-from ..utils import *
+from ..interfaces.ETModelInterface import ETModelInterface
+from .Category import Category
+from ..utils.helpers import *
 
 class Budget(ETModelInterface):
     def __init__(self, name='', category=None, b_range=(0, 0)):

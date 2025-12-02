@@ -1,9 +1,9 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ...models.BudgetList import BudgetList
-from ...models.Category import Category
-from ...models.Budget import Budget
+from src.expenses_tracker.models.BudgetList import BudgetList
+from src.expenses_tracker.models.Category import Category
+from src.expenses_tracker.models.Budget import Budget
 
 class TestBudgetList(TestCase):
     def setUp(self):

@@ -1,6 +1,6 @@
-from models import Category
-from interfaces import ETControllerInterface
-from utils.input_processors import string_input_processor, float_input_processor
+from ..models.Category import Category
+from ..interfaces.ETControllerInterface import ETControllerInterface
+from ..utils.input_processors import string_input_processor, float_input_processor
 
 class CategoryController(ETControllerInterface):
     def create(self):

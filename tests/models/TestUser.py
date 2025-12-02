@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ...models.User import User
+from src.expenses_tracker.models.User import User
 
 class TestUser(TestCase):
     def setUp(self):

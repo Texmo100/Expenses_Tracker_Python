@@ -1,6 +1,6 @@
-from models import Transaction
-from interfaces import ETControllerInterface
-from utils.input_processors import string_input_processor, float_input_processor
+from ..models import Transaction
+from ..interfaces import ETControllerInterface
+from ..utils.input_processors import string_input_processor, float_input_processor
 
 class TransactionController(ETControllerInterface):
     def create(self, category_list):

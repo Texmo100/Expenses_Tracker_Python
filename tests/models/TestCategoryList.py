@@ -1,8 +1,8 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ...models.CategoryList import CategoryList
-from ...models.Category import Category
+from src.expenses_tracker.models.CategoryList import CategoryList
+from src.expenses_tracker.models.Category import Category
 
 class TestCategoryList(TestCase):
     def setUp(self):

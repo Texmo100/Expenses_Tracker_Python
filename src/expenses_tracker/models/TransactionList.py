@@ -1,6 +1,6 @@
 from typing import override
 from .ETListBase import ETListBase
-from . import Transaction
+from .Transaction import Transaction
 
 class TransactionList(ETListBase):
     @override

@@ -1,11 +1,12 @@
 from unittest import TestCase
-from ...models.Tracker import Tracker
-from ...models.User import User
-from ...models.CategoryList import CategoryList
-from ...models.BudgetList import BudgetList
-from ...models.TransactionList import TransactionList
-
-from ...models import Category, Budget, Transaction
+from src.expenses_tracker.models.Tracker import Tracker
+from src.expenses_tracker.models.User import User
+from src.expenses_tracker.models.Category import Category
+from src.expenses_tracker.models.Budget import Budget
+from src.expenses_tracker.models.Transaction import Transaction
+from src.expenses_tracker.models.CategoryList import CategoryList
+from src.expenses_tracker.models.BudgetList import BudgetList
+from src.expenses_tracker.models.TransactionList import TransactionList
 
 class TestTracker(TestCase):
     def setUp(self):

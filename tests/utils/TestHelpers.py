@@ -1,5 +1,5 @@
 import unittest
-from ...utils.helpers import *
+from src.expenses_tracker.utils.helpers import *
 
 class TestHelpers(unittest.TestCase):
     def test_is_valid_string_with_string(self):

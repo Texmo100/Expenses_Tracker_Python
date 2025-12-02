@@ -1,6 +1,6 @@
 from typing import override
 from .ETListBase import ETListBase
-from . import Budget
+from .Budget import Budget
 
 class BudgetList(ETListBase):
     @override

@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from ...models.Category import Category
+from src.expenses_tracker.models.Category import Category
 from io import StringIO
 
 class TestCategory(TestCase):

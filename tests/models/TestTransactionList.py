@@ -1,9 +1,9 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from ...models.TransactionList import TransactionList
-from ...models.Category import Category
-from ...models.Transaction import Transaction
+from src.expenses_tracker.models.TransactionList import TransactionList
+from src.expenses_tracker.models.Category import Category
+from src.expenses_tracker.models.Transaction import Transaction
 
 class TestTransactionList(TestCase):
     def setUp(self):
