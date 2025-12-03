@@ -33,3 +33,19 @@ def is_valid_currency(currency):
         return True
     else:
         False
+
+def is_valid_name_in_collection(name, collection):
+    if isinstance(collection, list) and len(collection) > 0:
+        try:
+            filtered_list = filter(lambda x: x.name == name, collection)
+            filtered_list = list(filtered_list)
+
+            if len(filtered_list) > 0:
+                return False
+            
+            return True
+        except AttributeError:
+            print("Something went wrong during this operation: Attribute Error was detected")
+    else:
+        print("The collection is not a list or there are no items in it")
+        return False
