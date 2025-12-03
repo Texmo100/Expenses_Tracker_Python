@@ -5,8 +5,9 @@ from .Category import Category
 from ..utils.helpers import *
 
 class Transaction(ETModelInterface):
-    def __init__(self, tranc_type='', amount=0, category=None, payment_method=''):
+    def __init__(self, name='unknown', tranc_type='', amount=0, category=None, payment_method=''):
         self._id = 't00' + str(randint(1, 10000))
+        self._name = name
         self._tranc_type = tranc_type
         self._amount = amount
         self._category = category
@@ -16,6 +17,17 @@ class Transaction(ETModelInterface):
     @property
     def id(self):
         return self._id
+    
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, value):
+        if is_valid_string(value):
+            self._name = value
+        else:
+            print("Not a valid value for name")
     
     @property
     def tranc_type(self):
@@ -70,6 +82,7 @@ class Transaction(ETModelInterface):
 
     def show_detailed_info(self):
         print(f'ID: {self._id}')
+        print(f'Transaction Name: {self._name}')
         print(f'Transaction type: {self._tranc_type}')
         print(f'Amount: {self._amount}')
         print(f'Category: {self._category}')
