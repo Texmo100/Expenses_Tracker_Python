@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
@@ -68,3 +69,6 @@ class TestCategoryList(TestCase):
         error_messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn("Operation not allowed (Delete): The new item is not a category", error_messages)
+
+if __name__ == "__main__":
+    unittest.main()

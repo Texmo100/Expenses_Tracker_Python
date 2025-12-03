@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from src.expenses_tracker.models.Tracker import Tracker
 from src.expenses_tracker.models.User import User
@@ -41,3 +42,6 @@ class TestTracker(TestCase):
         self.assertEqual(len(self.obj.category_list.collection), 2)
         self.assertEqual(len(self.obj.budget_list.collection), 3)
         self.assertEqual(len(self.obj.transaction_list.collection), 4)
+
+if __name__ == "__main__":
+    unittest.main()

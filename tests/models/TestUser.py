@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
@@ -40,3 +41,6 @@ class TestUser(TestCase):
         self.assertIn("Not a valid value for lastname", error_messages)
         self.assertIn("Not a valid value for phone_number", error_messages)
         self.assertIn("Not a valid value for address", error_messages)
+
+if __name__ == "__main__":
+    unittest.main()

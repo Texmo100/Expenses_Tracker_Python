@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
@@ -51,3 +52,6 @@ class TestBudget(TestCase):
         self.assertIn(f'Budget Name: {self.obj.name}', messages_caught)
         self.assertIn(f'Budget range: ({self.obj.b_range[0]} {self.obj.b_range[1]})', messages_caught)
         self.assertIn(f'Created at: {self.obj.created_at}', messages_caught)
+
+if __name__ == "__main__":
+    unittest.main()

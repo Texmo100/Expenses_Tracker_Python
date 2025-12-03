@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from src.expenses_tracker.models.Category import Category
@@ -51,4 +52,6 @@ class TestCategory(TestCase):
         self.assertIn(f'Name: {self.obj.name}', messages_caught)
         self.assertIn(f'Description: {self.obj.description}', messages_caught)
         self.assertIn(f'Budget Limit: {self.obj.limit}', messages_caught)
-        
+
+if __name__ == "__main__":
+    unittest.main()

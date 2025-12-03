@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
@@ -73,3 +74,6 @@ class TestBudgetList(TestCase):
         error_messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn("Operation not allowed (Delete): The new item is not a budget", error_messages)
+
+if __name__ == "__main__":
+    unittest.main()

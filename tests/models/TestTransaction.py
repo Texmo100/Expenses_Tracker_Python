@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
@@ -69,3 +70,6 @@ class TestTransaction(TestCase):
         self.assertIn(f'Category: {self.obj.category}', messages)
         self.assertIn(f'Date: {self.obj.date}', messages)
         self.assertIn(f'Payment Method: {self.obj.payment_method}', messages)
+
+if __name__ == "__main__":
+    unittest.main()
