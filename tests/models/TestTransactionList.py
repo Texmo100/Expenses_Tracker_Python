@@ -32,14 +32,14 @@ class TestTransactionList(TestCase):
 
         self.assertIn("Operation not allowed (Add): The new item is not a transaction", error_messages)
 
-    def test_transactionlist_select_from_list(self):
+    def test_transactionlist_select_from_list_by_name(self):
         category = Category()
-        new_transaction = Transaction("expense", 100.0, category, "cash")
+        new_transaction = Transaction("sword", "expense", 100.0, category, "cash")
         self.obj.add_to_list(new_transaction)
 
-        selected_transaction_by_id = self.obj.select_from_list(search_term=new_transaction.id)
+        selected_transaction_by_name = self.obj.select_from_list_by_name(new_transaction.name)
 
-        self.assertEqual(selected_transaction_by_id, new_transaction)
+        self.assertEqual(selected_transaction_by_name, new_transaction)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_transactionlist_print_list(self, mock_stdout):

@@ -32,16 +32,14 @@ class TestBudgetList(TestCase):
 
         self.assertIn("Operation not allowed (Add): The new item is not a budget", error_messages)
 
-    def test_budgetlist_select_from_list(self):
+    def test_budgetlist_select_from_list_by_name(self):
         category = Category()
         new_budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 
-        selected_budget_by_name = self.obj.select_from_list(search_term="home", search_by="name")
-        selected_budget_by_id = self.obj.select_from_list(search_term=new_budget.id)
+        selected_budget_by_name = self.obj.select_from_list_by_name("home")
 
         self.assertEqual(selected_budget_by_name, new_budget)
-        self.assertEqual(selected_budget_by_id, new_budget)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_budgetlist_print_list(self, mock_stdout):

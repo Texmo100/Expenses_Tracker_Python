@@ -69,13 +69,15 @@ class TestHelpers(TestCase):
 
         self.assertTrue(is_valid_name_in_collection(test_name, test_category_list))
 
-    def test_is_valid_name_in_collection_with_existing_name(self):
+    @patch("builtins.print")
+    def test_is_valid_name_in_collection_with_existing_name(self, mock_print):
         category = Category("Games", "description for category", 100.0)
         test_category_list = [category]
 
         test_name = "Games"
 
         self.assertFalse(is_valid_name_in_collection(test_name, test_category_list))
+        mock_print.assert_called_once_with("This name is already in use")
 
     @patch("builtins.print")
     def test_is_valid_name_in_collection_with_no_valid_collection_type(self, mock_print):
@@ -94,6 +96,32 @@ class TestHelpers(TestCase):
 
         self.assertFalse(is_valid_name_in_collection(test_name, test_category_list))
         mock_print.assert_called_once_with("Something went wrong during this operation: Attribute Error was detected")
+
+    def test_is_valid_range_with_valid_values(self):
+        test_range = (100, 1000)
+        result = is_valid_range(test_range)
+        self.assertTrue(result)
+    
+    @patch("builtins.print")
+    def test_is_valid_range_with_invalid_values(self, mock_print):
+        test_range = (0, -500)
+        result = is_valid_range(test_range)
+        self.assertFalse(result)
+        mock_print.assert_called_once_with("Not a valid range of numbers")
+
+    @patch("builtins.print")
+    def test_is_valid_range_with_invalid_type(self, mock_print):
+        test_range = [10, 15]
+        result = is_valid_range(test_range)
+        self.assertFalse(result)
+        mock_print.assert_called_once_with("The range is not a tuple or doesn't contain two values")
+    
+    @patch("builtins.print")
+    def test_is_valid_range_with_invalid_number_of_items(self, mock_print):
+        test_range = [10]
+        result = is_valid_range(test_range)
+        self.assertFalse(result)
+        mock_print.assert_called_once_with("The range is not a tuple or doesn't contain two values")
 
 if __name__ == "__main__":
     unittest.main()

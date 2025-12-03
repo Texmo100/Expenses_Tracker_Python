@@ -9,14 +9,8 @@ class ETListBase:
     def add_to_list(self, new_item):
         self._collection.append(new_item)
 
-    def select_from_list(self, search_term, search_by="id"):
-        target_item = []
-        if search_by == 'id':
-            target_item = [item for item in self._collection if search_term == item.id]
-        
-        if search_by == 'name':
-            target_item = [item for item in self._collection if search_term == item.name]
-        
+    def select_from_list_by_name(self, search_term):
+        target_item = [item for item in self._collection if search_term == item.name]
         return target_item[0] if len(target_item) > 0 else None
     
     def print_list(self):

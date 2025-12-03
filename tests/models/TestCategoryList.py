@@ -30,15 +30,13 @@ class TestCategoryList(TestCase):
 
         self.assertIn("Operation not allowed (Add): The new item is not a category", error_messages)
 
-    def test_categorylist_select_from_list(self):
+    def test_categorylist_select_from_list_by_name(self):
         new_category = Category("games", "This is a dummy description", 1000.0)
         self.obj.add_to_list(new_category)
 
-        selected_category_by_name = self.obj.select_from_list(search_term="games", search_by="name")
-        selected_category_by_id = self.obj.select_from_list(search_term=new_category.id)
+        selected_category_by_name = self.obj.select_from_list_by_name("games")
 
         self.assertEqual(selected_category_by_name, new_category)
-        self.assertEqual(selected_category_by_id, new_category)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_categorylist_print_list(self, mock_stdout):

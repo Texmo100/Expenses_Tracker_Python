@@ -41,6 +41,7 @@ def is_valid_name_in_collection(name, collection):
             filtered_list = list(filtered_list)
 
             if len(filtered_list) > 0:
+                print("This name is already in use")
                 return False
             
             return True
@@ -48,4 +49,13 @@ def is_valid_name_in_collection(name, collection):
             print("Something went wrong during this operation: Attribute Error was detected")
     else:
         print("The collection is not a list or there are no items in it")
+        return False
+    
+def is_valid_range(range_numbers):
+    if isinstance(range_numbers, tuple) and len(range_numbers) == 2:
+        result = True if (range_numbers[0] < range_numbers[1]) and (range_numbers[0] >= 0 and range_numbers[1] > 0) else False
+        if result == False: print("Not a valid range of numbers")
+        return result
+    else:
+        print("The range is not a tuple or doesn't contain two values")
         return False
