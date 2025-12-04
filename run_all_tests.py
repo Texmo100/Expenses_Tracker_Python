@@ -16,6 +16,7 @@ from tests.models.TestTransactionList import TransactionList
 
 # Controllers
 from tests.controllers.TestCategoryController import TestCategoryController
+from tests.controllers.TestBudgetController import TestBudgetController
 
 def create_suite():
     # Create a test suite
@@ -35,7 +36,8 @@ def create_suite():
         CategoryList,
         TestBudgetList,
         TransactionList,
-        TestCategoryController
+        TestCategoryController,
+        TestBudgetController,
     ]
 
     for testcase in [all_testcases]:
