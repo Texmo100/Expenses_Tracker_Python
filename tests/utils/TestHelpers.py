@@ -123,5 +123,29 @@ class TestHelpers(TestCase):
         self.assertFalse(result)
         mock_print.assert_called_once_with("The range is not a tuple or doesn't contain two values")
 
+    def test_is_valid_tranc_type_with_valid_values(self):
+        test_tranc_type = "income"
+        result = is_valid_tranc_type(test_tranc_type)
+        self.assertTrue(result)
+
+    @patch("builtins.print")
+    def test_is_valid_tranc_type_with_invalid_values(self, mock_print):
+        test_tranc_type = "home"
+        result = is_valid_tranc_type(test_tranc_type)
+        self.assertFalse(result)
+        mock_print.assert_called_once_with("Transaction type not valid")
+
+    def test_is_valid_payment_method_with_valid_values(self):
+        test_payment_method = "cash"
+        result = is_valid_payment_method(test_payment_method)
+        self.assertTrue(result)
+
+    @patch("builtins.print")
+    def test_is_valid_payment_method_with_invalid_values(self, mock_print):
+        test_payment_method = "gold"
+        result = is_valid_payment_method(test_payment_method)
+        self.assertFalse(result)
+        mock_print.assert_called_once_with("Payment Method not valid")
+
 if __name__ == "__main__":
     unittest.main()

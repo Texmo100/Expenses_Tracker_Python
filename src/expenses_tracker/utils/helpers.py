@@ -59,3 +59,12 @@ def is_valid_range(range_numbers):
     else:
         print("The range is not a tuple or doesn't contain two values")
         return False
+    
+def is_valid_tranc_type(tranc_type):
+    if tranc_type.lower() == "expense" or tranc_type.lower() == "income": return True
+    else: print("Transaction type not valid")
+
+def is_valid_payment_method(payment_method):
+    if payment_method.lower() == "cash" or payment_method.lower() == "credit card": return True
+    else: print("Payment Method not valid")
+    
