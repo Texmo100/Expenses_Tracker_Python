@@ -19,6 +19,9 @@ from tests.controllers.TestCategoryController import TestCategoryController
 from tests.controllers.TestBudgetController import TestBudgetController
 from tests.controllers.TestTransactionController import TestTransactionController
 
+# UI
+from tests.ui.TestUi import TestUi
+
 def create_suite():
     # Create a test suite
     suite = unittest.TestSuite()
@@ -40,6 +43,7 @@ def create_suite():
         TestCategoryController,
         TestBudgetController,
         TestTransactionController,
+        TestUi,
     ]
 
     for testcase in [all_testcases]:

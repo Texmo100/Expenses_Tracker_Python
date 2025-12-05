@@ -11,25 +11,21 @@ def main_menu():
 def sub_menu(selected_option_name):
     sub_menu_options = {
         0: 'Main menu',
-        1: f'Show <place-holder>',
-        2: f'Create new <place-holder>',
-        3: f'Modify a <place-holder>',
-        4: f'Delete a <place-holder>'
+        1: f'Show',
+        2: f'Create',
+        3: f'Modify',
+        4: f'Delete'
     }
 
     # Formating and replacing placeholders
     for key, value in sub_menu_options.items():
-        if key == 1:
-            new_value = value.replace('<place-holder>', selected_option_name)
-            sub_menu_options[key] = new_value
-
-        if key > 1 and selected_option_name == 'categories':
-            new_value = value.replace('<place-holder>', 'category')
-            sub_menu_options[key] = new_value
-
-        if key > 1 and selected_option_name != 'categories':
-            new_value = value.replace('<place-holder>', selected_option_name[:-1])
-            sub_menu_options[key] = new_value
+        if key > 0:
+            if selected_option_name == "categories":
+                new_value = f"{value} {(selected_option_name[:-3] + "y" if key > 1 else selected_option_name)}"
+                sub_menu_options[key] = new_value
+            else:
+                new_value = f"{value} {(selected_option_name[:-1] if key > 1 else selected_option_name)}"
+                sub_menu_options[key] = new_value
 
     return sub_menu_options
 
