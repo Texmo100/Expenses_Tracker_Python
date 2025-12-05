@@ -29,7 +29,10 @@ def is_valid_currency(currency):
         False
 
 def is_valid_name_in_collection(name, collection):
-    if isinstance(collection, list) and len(collection) > 0:
+    if isinstance(collection, list):
+        if len(collection) == 0:
+            return True
+        
         try:
             filtered_list = filter(lambda x: x.name == name, collection)
             filtered_list = list(filtered_list)
@@ -42,7 +45,7 @@ def is_valid_name_in_collection(name, collection):
         except AttributeError:
             print("Something went wrong during this operation: Attribute Error was detected")
     else:
-        print("The collection is not a list or there are no items in it")
+        print("The collection is not a list")
         return False
     
 def is_valid_range(range_numbers):

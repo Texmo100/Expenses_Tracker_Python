@@ -25,7 +25,7 @@ class TransactionController(ETControllerInterface):
         is_valid_tranc_name = False
         while is_valid_tranc_name == False:
             transaction_name = string_input_processor("Enter the transaction name: ")
-            is_valid_tranc_name = is_valid_name_in_collection(transaction_name, transaction_list)
+            is_valid_tranc_name = is_valid_name_in_collection(transaction_name, transaction_list.collection)
         model.name = transaction_name
 
         is_valid_transaction_type = False

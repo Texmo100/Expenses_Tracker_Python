@@ -76,7 +76,7 @@ class TestHelpers(TestCase):
         test_name = "Games"
 
         self.assertFalse(is_valid_name_in_collection(test_name, test_category_list))
-        mock_print.assert_called_once_with("The collection is not a list or there are no items in it")
+        mock_print.assert_called_once_with("The collection is not a list")
 
     @patch("builtins.print")
     def test_is_valid_name_in_collection_with_invalid_items(self, mock_print):

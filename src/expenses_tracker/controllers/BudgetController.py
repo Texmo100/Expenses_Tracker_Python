@@ -24,7 +24,7 @@ class BudgetController(ETControllerInterface):
         is_valid_name = False
         while is_valid_name == False:
             budget_name = string_input_processor("Enter the budget name: ")
-            is_valid_name = is_valid_name_in_collection(budget_name, budget_list)
+            is_valid_name = is_valid_name_in_collection(budget_name, budget_list.collection)
         model.name = budget_name
             
         is_category_selected = False
