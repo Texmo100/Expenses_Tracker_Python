@@ -32,8 +32,7 @@ def string_input_processor(message):
             if is_valid_string(user_input):
                 return user_input
             
-            if is_valid_text(user_input):
-                return user_input
+            print("---- This string is not valid ----")
 
         except:
             print('Something went wrong: Enter characters only')

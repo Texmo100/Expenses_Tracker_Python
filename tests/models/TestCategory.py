@@ -29,7 +29,7 @@ class TestCategory(TestCase):
     @patch("sys.stdout", new_callable=StringIO)
     def test_category_setters_with_invalid_values(self, mock_stdout):
         self.obj.name = "*&*^%$^^*"
-        self.obj.description = "word"
+        self.obj.description = "789318713HUUH"
         self.obj.limit = 0
 
         errors_caught = mock_stdout.getvalue().split("\n")

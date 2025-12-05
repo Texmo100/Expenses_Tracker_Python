@@ -30,7 +30,7 @@ class Category(ETModelInterface):
     
     @description.setter
     def description(self, value):
-        if is_valid_text(value):
+        if is_valid_string(value):
             self._description = value
         else:
             print('Not a valid value for description')

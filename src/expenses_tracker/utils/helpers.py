@@ -10,13 +10,7 @@ def is_valid_string(string):
         return is_valid
     else:
         return False
-
-def is_valid_text(text):
-    if isinstance(text, str) and text.count(" ") > 0:
-        return True
-    else:
-        return False
-
+    
 def is_valid_phone_number(string):
     if isinstance(string, str) and string.isdigit():
         return True
