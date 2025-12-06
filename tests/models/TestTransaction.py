@@ -9,7 +9,7 @@ from datetime import date
 
 class TestTransaction(TestCase):
     def setUp(self):
-        category_test = Category()
+        category_test = Category("games")
         self.obj = Transaction("sword","expense", 100.0, category_test, "cash")
 
     def tearDown(self):
@@ -75,7 +75,7 @@ class TestTransaction(TestCase):
         self.assertIn(f'Transaction Name: {self.obj.name}', messages)
         self.assertIn(f'Transaction type: {self.obj.tranc_type}', messages)
         self.assertIn(f'Amount: {self.obj.amount}', messages)
-        self.assertIn(f'Category: {self.obj.category}', messages)
+        self.assertIn(f'Category: {self.obj.category.name}', messages)
         self.assertIn(f'Date: {self.obj.date}', messages)
         self.assertIn(f'Payment Method: {self.obj.payment_method}', messages)
 

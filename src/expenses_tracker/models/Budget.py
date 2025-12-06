@@ -56,7 +56,7 @@ class Budget(ETModelInterface):
     def show_detailed_info(self):
         print(f'ID: {self._id}')
         print(f'Budget Name: {self._name}')
-        print(f'Category name: {self._category}')
+        print(f'Category name: {self._category.name}')
         print(f'Budget range: ({self._b_range[0]} {self._b_range[1]})')
         print(f'Created at: {self._created_at}')
         print('\n')

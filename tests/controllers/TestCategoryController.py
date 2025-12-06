@@ -14,19 +14,21 @@ class TestCategoryController(TestCase):
     @patch("builtins.print")
     @patch.object(CategoryController, "_fill_info")
     def test_create_success(self, mock_fill_info, mock_print):
-        new_category = self.obj.create()
+        mock_categorylist = MagicMock(spec=CategoryList)
+        new_category = self.obj.create(mock_categorylist)
 
         self.assertIsInstance(new_category, Category)
-        mock_fill_info.assert_called_once_with(new_category)
+        mock_fill_info.assert_called_once_with(new_category, mock_categorylist)
         mock_print.assert_called_once_with("New Category created sucessfully!")
 
     @patch("builtins.print")
     @patch.object(CategoryController,"_fill_info")
     def test_update_success(self, mock_fill_info, mock_print):
-        category = MagicMock(spec=Category)
-        self.obj.update(category)
+        mock_category = MagicMock(spec=Category)
+        mock_categorylist = MagicMock(spec=CategoryList)
+        self.obj.update(mock_category, mock_categorylist)
 
-        mock_fill_info.assert_called_once_with(category)
+        mock_fill_info.assert_called_once_with(mock_category, mock_categorylist)
         mock_print.assert_called_once_with("Category updated sucessfully!")
 
     @patch("src.expenses_tracker.controllers.CategoryController.is_valid_name_in_collection")

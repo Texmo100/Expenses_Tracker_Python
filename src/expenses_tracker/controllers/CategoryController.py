@@ -5,18 +5,19 @@ from ..utils.helpers import *
 
 class CategoryController(ETControllerInterface):
     def create(self, *args):
+        category_list = args[0]
         new_category = Category()
-        self._fill_info(new_category)
+        self._fill_info(new_category, category_list)
         print("New Category created sucessfully!")
         return new_category
     
     def update(self, model, *args):
-        self._fill_info(model)
+        category_list = args[0]
+        self._fill_info(model, category_list)
         print("Category updated sucessfully!")
 
     def _fill_info(self, model, *args):
         category_list = args[0]
-
         is_valid_name = False
         while is_valid_name == False:
             category_name = string_input_processor("Enter the category name: ")

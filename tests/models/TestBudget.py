@@ -8,7 +8,7 @@ from src.expenses_tracker.models.Category import Category
 
 class TestBudget(TestCase):
     def setUp(self):
-        test_category = Category()
+        test_category = Category("games")
         self.obj = Budget("work", test_category, (100.00, 1000.00))
 
     def tearDown(self):
@@ -58,6 +58,7 @@ class TestBudget(TestCase):
 
         self.assertIn(f'ID: {self.obj.id}', messages_caught)
         self.assertIn(f'Budget Name: {self.obj.name}', messages_caught)
+        self.assertIn(f'Category name: {self.obj._category.name}', messages_caught)
         self.assertIn(f'Budget range: ({self.obj.b_range[0]} {self.obj.b_range[1]})', messages_caught)
         self.assertIn(f'Created at: {self.obj.created_at}', messages_caught)
 

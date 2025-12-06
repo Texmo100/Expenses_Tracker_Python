@@ -56,7 +56,7 @@ class TestBudgetList(TestCase):
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_budgetlist_print_detailed_list(self, mock_stdout):
-        category = Category()
+        category = Category("games")
         new_budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 

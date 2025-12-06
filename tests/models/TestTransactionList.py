@@ -56,7 +56,7 @@ class TestTransactionList(TestCase):
     
     @patch("sys.stdout", new_callable=StringIO)
     def test_transactionlist_print_detailed_list(self, mock_stdout):
-        category = Category()
+        category = Category("games")
         new_transaction = Transaction("game", "expense", 100.0, category, "cash")
         self.obj.add_to_list(new_transaction)
 
@@ -68,7 +68,7 @@ class TestTransactionList(TestCase):
         self.assertIn(f'Transaction Name: {self.obj.collection[0]._name}', messages)
         self.assertIn(f'Transaction type: {self.obj.collection[0].tranc_type}', messages)
         self.assertIn(f'Amount: {self.obj.collection[0].amount}', messages)
-        self.assertIn(f'Category: {self.obj.collection[0].category}', messages)
+        self.assertIn(f'Category: {self.obj.collection[0].category.name}', messages)
         self.assertIn(f'Date: {self.obj.collection[0].date}', messages)
         self.assertIn(f'Payment Method: {self.obj.collection[0].payment_method}', messages)
 
