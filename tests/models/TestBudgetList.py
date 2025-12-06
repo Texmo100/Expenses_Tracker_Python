@@ -1,6 +1,6 @@
 import unittest
 from unittest import TestCase
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 from io import StringIO
 from src.expenses_tracker.models.BudgetList import BudgetList
 from src.expenses_tracker.models.Category import Category
@@ -17,11 +17,13 @@ class TestBudgetList(TestCase):
         self.assertIsInstance(self.obj, BudgetList)
         self.assertIsInstance(self.obj.collection, list)
     
-    def test_budgetlist_add_with_valid_values(self):
-        new_category = Budget()
-        self.obj.add_to_list(new_category)
+    @patch("builtins.print")
+    def test_budgetlist_add_with_valid_values(self, mock_print):
+        new_budget = Budget()
+        self.obj.add_to_list(new_budget)
 
-        self.assertIn(new_category, self.obj.collection)
+        mock_print.assert_called_once_with(f'{new_budget.id} was added successfully to the list')
+        self.assertIn(new_budget, self.obj.collection)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_budgetlist_add_with_invalid_values(self, mock_stdout):
@@ -33,18 +35,20 @@ class TestBudgetList(TestCase):
 
         self.assertIn("Operation not allowed (Add): The new item is not a budget", error_messages)
 
-    def test_budgetlist_select_from_list_by_name(self):
-        category = Category()
-        new_budget = Budget("home", category, (500.0, 1000.0))
+    @patch("builtins.print")
+    def test_budgetlist_select_from_list_by_name(self, mock_print):
+        mock_category = MagicMock(spec=Category())
+        new_budget = Budget("home", mock_category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 
         selected_budget_by_name = self.obj.select_from_list_by_name("home")
 
+        mock_print.assert_called_once_with(f'{new_budget.id} was added successfully to the list')
         self.assertEqual(selected_budget_by_name, new_budget)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_budgetlist_print_short_list(self, mock_stdout):
-        category = Category()
+        category = MagicMock(spec=Category)
         new_budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 
@@ -52,11 +56,12 @@ class TestBudgetList(TestCase):
 
         messages = mock_stdout.getvalue().split("\n")
 
+        self.assertIn(f'{new_budget.id} was added successfully to the list', messages)
         self.assertIn(f'{self.obj.collection[0].id}: {self.obj.collection[0].name}', messages)
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_budgetlist_print_detailed_list(self, mock_stdout):
-        category = Category("games")
+        category = MagicMock(spec=Category, name="games")
         new_budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 
@@ -64,18 +69,24 @@ class TestBudgetList(TestCase):
 
         messages = mock_stdout.getvalue().split("\n")
 
+        self.assertIn(f'{new_budget.id} was added successfully to the list', messages)
         self.assertIn(f'ID: {self.obj.collection[0].id}', messages)
+        self.assertIn(f'Category name: {self.obj.collection[0].category.name}', messages)
         self.assertIn(f'Budget Name: {self.obj.collection[0].name}', messages)
         self.assertIn(f'Budget range: ({self.obj.collection[0].b_range[0]} {self.obj.collection[0].b_range[1]})', messages)
         self.assertIn(f'Created at: {self.obj.collection[0].created_at}', messages)
 
-    def test_budgetlist_remove(self):
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_budgetlist_remove(self, mock_stdout):
         category = Category()
         budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(budget)
-
         self.obj.remove_from_list(budget)
 
+        messages = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{budget.id} was added successfully to the list', messages)
+        self.assertIn(f'{budget.id} was removed successfully from the list', messages)
         self.assertNotIn(budget, self.obj.collection)
 
     @patch("sys.stdout", new_callable=StringIO)

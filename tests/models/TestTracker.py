@@ -1,5 +1,7 @@
 import unittest
 from unittest import TestCase
+from unittest.mock import patch, MagicMock
+from io import StringIO
 from src.expenses_tracker.models.Tracker import Tracker
 from src.expenses_tracker.models.User import User
 from src.expenses_tracker.models.Category import Category
@@ -26,22 +28,29 @@ class TestTracker(TestCase):
         self.assertIsInstance(self.obj.budget_list, BudgetList)
         self.assertIsInstance(self.obj.transaction_list, TransactionList)
 
-    def test_tracker_lists_uniqueness(self):
-        new_category = Category()
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_tracker_lists_uniqueness(self, mock_stdout):
+        new_category = MagicMock(spec=Category())
         for i in range(2):
             self.obj.category_list.add_to_list(new_category)
         
-        new_budget = Budget()
+        new_budget = MagicMock(spec=Budget())
         for i in range(3):
             self.obj.budget_list.add_to_list(new_budget)
 
-        new_transaction = Transaction()
+        new_transaction = MagicMock(spec=Transaction())
         for i in range(4):
             self.obj.transaction_list.add_to_list(new_transaction)
+
+        messages = mock_stdout.getvalue().split("\n")
 
         self.assertEqual(len(self.obj.category_list.collection), 2)
         self.assertEqual(len(self.obj.budget_list.collection), 3)
         self.assertEqual(len(self.obj.transaction_list.collection), 4)
+
+        self.assertIn(f'{new_category.id} was added successfully to the list', messages)
+        self.assertIn(f'{new_budget.id} was added successfully to the list', messages)
+        self.assertIn(f'{new_transaction.id} was added successfully to the list', messages)
 
 if __name__ == "__main__":
     unittest.main()
