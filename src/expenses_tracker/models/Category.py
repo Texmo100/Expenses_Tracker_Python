@@ -51,3 +51,4 @@ class Category(ETModelInterface):
         print(f'Name: {self._name}')
         print(f'Description: {self._description}')
         print(f'Budget Limit: {self._limit}')
+        print('\n')

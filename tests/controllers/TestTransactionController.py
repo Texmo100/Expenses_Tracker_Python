@@ -59,10 +59,11 @@ class TestTransactionController(TestCase):
         self.assertEqual(test_transaction.payment_method, "cash")
 
         mock_string_processor.assert_any_call("Enter the transaction name: ")
-        mock_string_processor.assert_any_call("Enter the transaction type: ")
-        mock_string_processor.assert_any_call("Enter the category name: ")
+        mock_string_processor.assert_any_call("Enter the transaction type (expense or income): ")
         mock_valid_tranc_type.assert_called_once()
         mock_float_processor.assert_any_call("Enter the transaction amount: ")
+        mock_string_processor.assert_any_call("Enter the category name: ")
+        mock_string_processor.assert_any_call("Enter the payment method (cash or credit card): ")
         mock_valid_payment_method.assert_called_once()
     
 if __name__ == "__main__":

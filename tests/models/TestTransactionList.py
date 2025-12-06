@@ -43,16 +43,29 @@ class TestTransactionList(TestCase):
         self.assertEqual(selected_transaction_by_name, new_transaction)
 
     @patch("sys.stdout", new_callable=StringIO)
-    def test_transactionlist_print_list(self, mock_stdout):
+    def test_transactionlist_print_short_list(self, mock_stdout):
         category = Category()
-        new_transaction = Transaction("expense", 100.0, category, "cash")
+        new_transaction = Transaction("game", "expense", 100.0, category, "cash")
         self.obj.add_to_list(new_transaction)
 
-        self.obj.print_list()
+        self.obj.print_short_list()
+
+        messages = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{self.obj.collection[0].id}: {self.obj.collection[0].name}', messages)
+    
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_transactionlist_print_detailed_list(self, mock_stdout):
+        category = Category()
+        new_transaction = Transaction("game", "expense", 100.0, category, "cash")
+        self.obj.add_to_list(new_transaction)
+
+        self.obj.print_detailed_list()
 
         messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn(f'ID: {self.obj.collection[0].id}', messages)
+        self.assertIn(f'Transaction Name: {self.obj.collection[0]._name}', messages)
         self.assertIn(f'Transaction type: {self.obj.collection[0].tranc_type}', messages)
         self.assertIn(f'Amount: {self.obj.collection[0].amount}', messages)
         self.assertIn(f'Category: {self.obj.collection[0].category}', messages)

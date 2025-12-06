@@ -30,10 +30,7 @@ class TransactionController(ETControllerInterface):
 
         is_valid_transaction_type = False
         while is_valid_transaction_type == False:
-            print("Options available:")
-            print("- expense")
-            print("+ income")
-            tranc_type = string_input_processor("Enter the transaction type: ")
+            tranc_type = string_input_processor("Enter the transaction type (expense or income): ")
             is_valid_transaction_type = is_valid_tranc_type(tranc_type)
         model.tranc_type = tranc_type
 
@@ -41,7 +38,7 @@ class TransactionController(ETControllerInterface):
 
         is_category_selected = False
         while is_category_selected == False:
-            category_list.print_list()
+            category_list.print_short_list()
             category_name = string_input_processor("Enter the category name: ")
 
             search_category_by_name = category_list.select_from_list_by_name(category_name)
@@ -54,10 +51,7 @@ class TransactionController(ETControllerInterface):
 
         is_payment_method_valid = False
         while is_payment_method_valid == False:
-            print("Options available:")
-            print("cash")
-            print("credit card")
-            payment_method = string_input_processor("Enter the payment method: ")
+            payment_method = string_input_processor("Enter the payment method (cash or credit card): ")
             is_payment_method_valid = is_valid_payment_method(payment_method)
         model.payment_method = payment_method
         

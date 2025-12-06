@@ -43,6 +43,14 @@ class TestBudget(TestCase):
         self.assertIn("Not a valid value for b_range", errors_caught)
 
     @patch("sys.stdout", new_callable=StringIO)
+    def test_budget_show_short_info(self, mock_stdout):
+        self.obj.show_short_info()
+
+        messages_caught = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{self.obj.id}: {self.obj.name}', messages_caught)
+
+    @patch("sys.stdout", new_callable=StringIO)
     def test_budget_show_detailed_info(self, mock_stdout):
         self.obj.show_detailed_info()
 

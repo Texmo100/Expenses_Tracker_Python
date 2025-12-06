@@ -13,13 +13,20 @@ class ETListBase:
         target_item = [item for item in self._collection if search_term == item.name]
         return target_item[0] if len(target_item) > 0 else None
     
-    def print_list(self):
+    def remove_from_list(self, item_to_remove):
+        self._collection.remove(item_to_remove)
+
+    def print_short_list(self):
+        if len(self._collection) == 0:
+            print("No items in collection")
+        else:
+            for item in self._collection:
+                item.show_short_info()
+    
+    def print_detailed_list(self):
         if len(self._collection) == 0:
             print("No items in collection")
         else:
             for item in self._collection:
                 item.show_detailed_info()
-
-    def remove_from_list(self, item_to_remove):
-        self._collection.remove(item_to_remove)
-        
+                

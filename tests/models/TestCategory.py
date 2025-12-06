@@ -43,6 +43,14 @@ class TestCategory(TestCase):
         self.assertNotEqual(self.obj.limit, 0)
 
     @patch("sys.stdout", new_callable=StringIO)
+    def test_category_show_short_info(self, mock_stdout):
+        self.obj.show_short_info()
+
+        messages_caught = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{self.obj.id}: {self.obj.name}', messages_caught)
+    
+    @patch("sys.stdout", new_callable=StringIO)
     def test_category_show_detailed_info(self, mock_stdout):
         self.obj.show_detailed_info()
 

@@ -59,3 +59,4 @@ class Budget(ETModelInterface):
         print(f'Category name: {self._category}')
         print(f'Budget range: ({self._b_range[0]} {self._b_range[1]})')
         print(f'Created at: {self._created_at}')
+        print('\n')

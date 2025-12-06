@@ -40,11 +40,22 @@ class TestCategoryList(TestCase):
         self.assertEqual(selected_category_by_name, new_category)
 
     @patch("sys.stdout", new_callable=StringIO)
-    def test_categorylist_print_list(self, mock_stdout):
+    def test_categorylist_print_short_list(self, mock_stdout):
         new_category = Category("games", "This is a dummy description", 1000.0)
         self.obj.add_to_list(new_category)
 
-        self.obj.print_list()
+        self.obj.print_short_list()
+
+        messages = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{self.obj.collection[0].id}: {self.obj.collection[0].name}', messages)
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_categorylist_print_detailed_list(self, mock_stdout):
+        new_category = Category("games", "This is a dummy description", 1000.0)
+        self.obj.add_to_list(new_category)
+
+        self.obj.print_detailed_list()
 
         messages = mock_stdout.getvalue().split("\n")
 

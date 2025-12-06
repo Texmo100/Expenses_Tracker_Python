@@ -29,7 +29,7 @@ class BudgetController(ETControllerInterface):
             
         is_category_selected = False
         while is_category_selected == False:
-            category_list.print_list()
+            category_list.print_short_list()
             category_name = string_input_processor("Enter the category name: ")
 
             search_category_by_name = category_list.select_from_list_by_name(category_name)

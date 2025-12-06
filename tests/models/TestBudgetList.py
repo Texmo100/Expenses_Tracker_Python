@@ -43,12 +43,24 @@ class TestBudgetList(TestCase):
         self.assertEqual(selected_budget_by_name, new_budget)
 
     @patch("sys.stdout", new_callable=StringIO)
-    def test_budgetlist_print_list(self, mock_stdout):
+    def test_budgetlist_print_short_list(self, mock_stdout):
         category = Category()
         new_budget = Budget("home", category, (500.0, 1000.0))
         self.obj.add_to_list(new_budget)
 
-        self.obj.print_list()
+        self.obj.print_short_list()
+
+        messages = mock_stdout.getvalue().split("\n")
+
+        self.assertIn(f'{self.obj.collection[0].id}: {self.obj.collection[0].name}', messages)
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_budgetlist_print_detailed_list(self, mock_stdout):
+        category = Category()
+        new_budget = Budget("home", category, (500.0, 1000.0))
+        self.obj.add_to_list(new_budget)
+
+        self.obj.print_detailed_list()
 
         messages = mock_stdout.getvalue().split("\n")
 

@@ -88,3 +88,4 @@ class Transaction(ETModelInterface):
         print(f'Category: {self._category}')
         print(f'Date: {self._date}')
         print(f'Payment Method: {self._payment_method}')
+        print('\n')
