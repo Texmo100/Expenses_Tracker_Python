@@ -1,6 +1,6 @@
 from .helpers import *
 
-def option_input_processor(message):
+def option_input_processor(message, num_options):
     while(True):
         try:
             user_input = input(message)
@@ -10,10 +10,10 @@ def option_input_processor(message):
                 continue
 
             user_input = int(user_input)
-            if is_valid_integer(user_input):
+            if is_valid_integer(user_input) and user_input <= num_options:
                 return user_input
             else:
-                print('Input not valid')
+                print('Input is out of range of available options')
                 continue
                 
         except ValueError:
