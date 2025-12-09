@@ -9,35 +9,35 @@ class TestInputProcessors(TestCase):
     @patch("builtins.input")
     @patch("sys.stdout", new_callable=StringIO)
     def test_option_input_processor_with_empty_input_then_valid_input(self, mock_stdout, mock_input):
-        mock_input.side_effect = ["        ", "4"]
+        mock_input.side_effect = ["        ", "3"]
 
         actual_result = option_input_processor("Enter an option: ", num_options=4)
         messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn("Input not valid: This is only white spaces or is an empty string", messages)
-        self.assertEqual(actual_result, 4)
+        self.assertEqual(actual_result, 3)
 
     @patch("builtins.input")
     @patch("sys.stdout", new_callable=StringIO)
     def test_option_input_processor_with_invalid_input_then_valid_input(self, mock_stdout, mock_input):
-        mock_input.side_effect = ["hello879dahdua&(*)", "4"]
+        mock_input.side_effect = ["hello879dahdua&(*)", "3"]
 
         actual_result = option_input_processor("Enter an option: ", num_options=4)
         messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn("Something went wrong: Enter numbers only", messages)
-        self.assertEqual(actual_result, 4)
+        self.assertEqual(actual_result, 3)
 
     @patch("builtins.input")
     @patch("sys.stdout", new_callable=StringIO)
     def test_option_input_processor_with_invalid_num_options_then_valid_num_options(self, mock_stdout, mock_input):
-        mock_input.side_effect = ["5", "4"]
+        mock_input.side_effect = ["4", "3"]
 
         actual_result = option_input_processor("Enter an option: ", num_options=4)
         messages = mock_stdout.getvalue().split("\n")
 
         self.assertIn("Input is out of range of available options", messages)
-        self.assertEqual(actual_result, 4)
+        self.assertEqual(actual_result, 3)
 
     @patch("builtins.input")
     @patch("sys.stdout", new_callable=StringIO)

@@ -10,7 +10,7 @@ def option_input_processor(message, num_options):
                 continue
 
             user_input = int(user_input)
-            if is_valid_integer(user_input) and user_input <= num_options:
+            if is_valid_integer(user_input) and user_input <= num_options -1:
                 return user_input
             else:
                 print('Input is out of range of available options')
