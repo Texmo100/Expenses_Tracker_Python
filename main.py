@@ -80,30 +80,29 @@ def update_executor(model_list, model_list_dependency, model_controller):
     if len(model_list.collection) == 0:
         print("Update is not available: You must create an item first")
     else:
-        item_found = False
-        while item_found == False:
-            model_list.print_short_list()
-            model_item_name = string_input_processor("Enter the name of the item you want to update: ")
-            existing_model_item = model_list.select_from_list_by_name(model_item_name)
-            if existing_model_item != None: item_found = True
-            if existing_model_item == None: print("Item not found: item name misspelled or not in collection")
-
-        model_controller.update(existing_model_item, model_list, model_list_dependency)
+        model_item = find_item_in_model_list(model_list)
+        model_controller.update(model_item, model_list, model_list_dependency)
 
 def delete_executor(model_list):
     if len(model_list.collection) == 0:
         print("Delete is not available: You must create an item first")
     else:
-        item_found = False
-        while item_found == False:
-            model_list.print_short_list()
-            model_item_name = string_input_processor("Enter the name of the item you want to delete: ")
-            existing_model_item = model_list.select_from_list_by_name(model_item_name)
-            if existing_model_item != None: item_found = True
-            if existing_model_item == None: print("Item not found: item name misspelled or not in collection")
+        model_item = find_item_in_model_list(model_list)
+        model_list.remove_from_list(model_item)
+        model_item = None
 
-        model_list.remove_from_list(existing_model_item)
-        existing_model_item = None
+def find_item_in_model_list(model_list):
+    existing_model_item = None
+
+    item_found = False
+    while item_found == False:
+        model_list.print_short_list()
+        model_item_name = string_input_processor("Enter the name of the item: ")
+        existing_model_item = model_list.select_from_list_by_name(model_item_name)
+        if existing_model_item != None: item_found = True
+        if existing_model_item == None: print("Item not found: item name misspelled or not in collection")
+    
+    return existing_model_item
 
 if __name__ == '__main__':
     main()
